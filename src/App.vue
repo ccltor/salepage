@@ -4,13 +4,22 @@
       <ProductItem
         v-for="(product, i) in productList"
         :product-info="product"
-        @click:buy="showDetail" />
+        @click:buy="qtyAndamt" />
+        <!-- @click:buy="showDetail" /> -->
     </div>
     <hr>
     <br><br>
-    <h3 v-if="totalOrderPrice">
+    <div>
+      <p>Total Order by Quantity: {{ totalQty }} pcs; by Amount: {{ totalAmt }} Bth.</p>
+      <p>Order categorize by product</p>
+      <p>Product A Quantity: {{ aqty }} pcs; Amount: {{ aamt }} Bth.</p>
+      <p>Product B Quantity: {{ bqty }} pcs; Amount: {{ bamt }} Bth.</p>
+      <p>Product C Quantity: {{ cqty }} pcs; Amount: {{ camt }} Bth.</p>
+    </div>
+  
+    <!-- <h3 v-if="totalOrderPrice">
       Total Order Price: {{ totalOrderPrice }} ฿
-    </h3>
+    </h3> -->
   </div>
 </template>
 
@@ -35,6 +44,7 @@ const productList = ref([
     quantity: 99,
   }
 ])
+
 const totalOrderPrice = ref(0)
 // const selectedProducts = ref([])
 
@@ -42,6 +52,28 @@ const showDetail = (product) => {
   totalOrderPrice.value += Number(product.price)
   // selectedProducts.value.push(product)
 }
+
+const aqty = bqty = cqty = ref(0)
+const aamt = bamt = camt = ref(0)
+const totalQty = totalAmt = ref(0)
+
+const qtyAndamt = (product) => {
+  if (product.name = "Product A") {
+    aqty.value += 1
+    aamt.value += 100
+  } else if (product.name = "Product B") {
+    bqty.value += 1
+    bamt.value += 100
+  } else if (product.name = "Product C") {
+    cqty.value += 1
+    camt.value += 100
+  } else {
+    totalQty.value = aqty.value + bqty.value + cqty.value
+    totalAmt.value = aamt.value + bamt.value + camt.value
+  }
+}
+
+)
 
 </script>
 
