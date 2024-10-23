@@ -9,7 +9,7 @@
     </div>
     <hr>
     <br><br>
-    <div v if ="totalAmt">
+    <div v-if ="totalAmt">
       <h3>Total Order by Quantity: {{ totalQty }} pcs; by Amount: {{ totalAmt }} Bth.</h3>
       <p>Order categorize by product</p>
       <p>Product A Quantity: {{ aqty }} pcs; Amount: {{ aamt }} Bth.</p>
