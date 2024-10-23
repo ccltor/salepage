@@ -9,8 +9,8 @@
     </div>
     <hr>
     <br><br>
-    <div>
-      <p>Total Order by Quantity: {{ totalQty }} pcs; by Amount: {{ totalAmt }} Bth.</p>
+    <div v if ="totalAmt">
+      <h3>Total Order by Quantity: {{ totalQty }} pcs; by Amount: {{ totalAmt }} Bth.</h3>
       <p>Order categorize by product</p>
       <p>Product A Quantity: {{ aqty }} pcs; Amount: {{ aamt }} Bth.</p>
       <p>Product B Quantity: {{ bqty }} pcs; Amount: {{ bamt }} Bth.</p>
@@ -53,27 +53,38 @@ const showDetail = (product) => {
   // selectedProducts.value.push(product)
 }
 
-const aqty = bqty = cqty = ref(0)
-const aamt = bamt = camt = ref(0)
-const totalQty = totalAmt = ref(0)
+const aqty = ref(0)
+const bqty = ref(0)
+const cqty = ref(0)
+const aamt = ref(0)
+const bamt = ref(0)
+const camt = ref(0)
+const totalQty = ref(0)
+const totalAmt = ref(0)
 
-const qtyAndamt = (product) => {
-  if (product.name = "Product A") {
+const qtyAndamt = (selectedProduct) => {
+  console.log("selecetdProduct =", selectedProduct)
+  console.log("selecetdProduct.name =", selectedProduct.name)
+  console.log("condition result= ", (selectedProduct.name == "Product A"))
+  console.log("condition result= ", (selectedProduct.name == "Product B"))
+  console.log("condition result= ", (selectedProduct.name == "Product C"))
+
+  if (selectedProduct.name == "Product A") {
     aqty.value += 1
     aamt.value += 100
-  } else if (product.name = "Product B") {
+  } else if (selectedProduct.name == "Product B") {
     bqty.value += 1
-    bamt.value += 100
-  } else if (product.name = "Product C") {
+    bamt.value += 200
+  } else if (selectedProduct.name == "Product C") {
     cqty.value += 1
-    camt.value += 100
+    camt.value += 300
   } else {
-    totalQty.value = aqty.value + bqty.value + cqty.value
-    totalAmt.value = aamt.value + bamt.value + camt.value
+    //
   }
+  totalQty.value = aqty.value + bqty.value + cqty.value
+  totalAmt.value = aamt.value + bamt.value + camt.value
 }
 
-)
 
 </script>
 
